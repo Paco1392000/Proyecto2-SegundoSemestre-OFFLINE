@@ -1,0 +1,21 @@
+:root {--dark: #16191C; --dark-x: #1E2126; --light: #ffffff;}
+body {font-family: 'Spartan', sans-serif; font-weight: 300; color: var(--light);}
+.text-light {color: var(--light) !important;}
+.bg-dark {background-color: var(--dark) !important;}
+.bg-dark-x {background-color: var(--dark-x);}
+.btn {min-height: 3.125rem; font-weight: 600;}
+.form-control {min-height: 3.125rem; line-height: initial;}
+.form-control:focus {background-color: var(--dark-x); outline: none;}
+a{text-decoration: none;}
+a :hover{text-decoration: none;}
+
+
+.img-1 {background-image: url('https://tripeditor.com/wp-content/uploads/2018/12/11192206/shutterstock_716992390.jpg'); background-size: cover; background-position: center;}
+.img-2 {background-image: url('https://www.nexusholidays.ca/Upload/images/line_pic/201609/1473799343.jpg'); background-size: cover; background-position: center;}
+.img-3 {background-image: url('https://www.desktopbackground.org/download/o/2012/01/22/332216_stock-photos-food-photography-food-2014-hd_4186x3142_h.jpg'); background-size: cover; background-position: center;}
+.img-4 {background-image: url('https://i.pinimg.com/originals/72/7d/26/727d26093e09133ab360e8fc3679c9a4.jpg'); background-size: cover; background-position: center;}
+.img-5 {background-image: url('https://i.pinimg.com/originals/20/b7/dc/20b7dc1c8c6c6d6ced2914a17b2cf9b7.jpg'); background-size: cover; background-position: center;}
+.img-6 {background-image: url('https://es-static.z-dn.net/files/d26/4a02d99ded25c6412aa24ece2861cb7b.jpg'); background-size: cover; background-position: center;}
+.img-7 {background-image: url('https://wapp.mx/media/sm_negocio1.jpg'); background-size: cover; background-position: center;}
+.img-8 {background-image: url('https://rexeats.com/images/tacos-245241.jpg'); background-size: cover; background-position: center;}
+.img-9 {background-image: url('https://www.geocities.ws/jeremyclass/images/raw.jpg'); background-size: cover; background-position: center;}
