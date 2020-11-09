@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/logo.svg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../static/home.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    {% block inicial %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="d-flex" id="content-wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h4 class="font-weight-bold mb-0">CUK<img class="ml-4" src="../static/logo.svg" width="40"></h4>
+            </div>
+            <div class="menu">
+                <a href="/inicio" class="d-block p-3 border-0"><i class="icon ion-md-albums lead mr-2"></i>Inicio</a>
+                {% if usuario == 'paco_139' or usuario == 'admin' %}
+                <a href="/usuarios" class="d-block p-3 border-0"><i
+                        class="icon ion-md-people lead mr-2"></i>Usuarios</a>
+                <a href="/publicaciones" class="d-block p-3 border-0"><i
+                        class="icon ion-md-eye lead mr-2"></i>Publicaciones</a>
+                <a href="/comentarios" class="d-block p-3 border-0"><i
+                        class="icon ion-md-checkmark lead mr-2"></i>Comentarios</a>
+                {% endif %}
+                <a href="/receta" class="d-block p-3 border-0"> <i
+                        class="icon ion-md-infinite lead mr-2"></i>Recetas</a>
+                {% if usuario == 'paco_139' or usuario == 'admin' %}
+                <a href="/reportes" class="d-block p-3 border-0" target="_blank"><i
+                        class="icon ion-md-aperture lead mr-2"></i>Reportes</a>
+                {% endif %}
+
+
+            </div>
+        </div>
+        <!-- Fin sidebar -->
+
+        <div class="w-100">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="form-inline position-relative d-inline-block my-2">
+                            <input class="form-control" type="text" placeholder="Buscar" id="formulario"
+                                aria-label="Buscar">
+                            <button class="btn position-absolute btn-search" id="boton"><i
+                                    class="icon ion-md-search"></i></button>
+                        </form>
+
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                {% if usuario == 'paco_139' %}
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/70ba6d0b-13cc-4dc5-8f5d-d6885fb7b4a8/dcm28cn-51577715-967b-435f-94f6-708d28d00052.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNzBiYTZkMGItMTNjYy00ZGM1LThmNWQtZDY4ODVmYjdiNGE4XC9kY20yOGNuLTUxNTc3NzE1LTk2N2ItNDM1Zi05NGY2LTcwOGQyOGQwMDA1Mi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.lyZ3GhOG4Doi1cBnO5PfIrGSH6sgAC-AlgprKo_K7ds"
+                                        class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" />
+                                    {{usuario}}
+                                </a>
+                                {% elif usuario == 'admin' %}
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://pm1.narvii.com/7019/f247d189cc159afca8389db9b0760022dda62e04r1-1800-1796v2_hq.jpg"
+                                        class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" />
+                                    {{usuario}}
+                                </a>
+                                {% else %}
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png"
+                                        class="img-fluid rounded-circle avatar mr-2" alt="https://generated.photos/" />
+                                    {{usuario}}
+                                </a>
+                                {% endif %}
+                                {% if usuario != None %}
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/usuarios/{{usuario}}">Perfil</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Cerrar sesión</a>
+                                </div>
+                                {% else %}
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/logout">Iniciar Secion</a>
+                                </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Fin Navbar -->
+            <!-- Page Content -->
+            <div id="content" class="bg-grey w-100">
+                <section class="bg-light py-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8">
+                                <h1 class="font-weight-bold mb-0">C.U.K</h1>
+                                <p class="lead text-muted">Cocina Gourmet al alcance de todos</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {% block content %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.es.js"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.es.min.js"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.node.js"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.node.min.js"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.umd.js"></script>
+    <script type="text/JavaScript" src="../static/js/jspdf.umd.min.js"></script>
+
+
+
+    {% block fine %}
+    {% endblock %}
+
+    <!-- Recetas -->
+
+
+
+
+
+
+</body>
+
+</html>

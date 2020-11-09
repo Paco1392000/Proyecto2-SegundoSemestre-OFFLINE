@@ -1,0 +1,158 @@
+{% extends 'layout.html' %}
+{% block inicial %}
+<title>CUK - Receta Seleccionada</title>
+{% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12  my-4 ml-0">
+                <div class="card rounded-0">
+                    {% if receta != None %}
+                    <div class="card-header bg-light">
+                        <h6 class="font-weight-bold mb-0">Receta Seleccionada: {{receta.titulo}}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="content w-5">
+                            <section class="cons">
+                                <figure class="conse">
+                                    <figcaption class="cabecera">
+                                        <h5 class="aus">Autor: {{receta.autor}}</h5>
+                                        <h5 class="temp">Tiempo: {{receta.tiempo}}</h5>
+                                    </figcaption>
+                                    <figcaption class="tittle">
+                                        <h3>{{receta.titulo}}</h3>
+                                    </figcaption>
+
+                                    <figcaption class="ingre">
+                                        <h5 class="ing">Ingredientes</h5>
+                                        <p fontsize="5">
+                                            {{receta.ingredientes}}
+                                        </p>
+                                    </figcaption>
+                                    <figcaption class="proce">
+                                        <h5 class="proc">Procedimiento</h5>
+                                        <p fontsize="5">
+                                            {{receta.procedimiento}}
+                                        </p>
+                                    </figcaption>
+                                    <figcaption class="resu">
+                                        <h5 class="res">Resumen</h5>
+                                        <p fontsize="5">
+                                            {{receta.resumen}}
+                                        </p>
+                                    </figcaption>
+                                    <img src="{{receta.imagen}}">
+                                </figure>
+                            </section>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- area de posts puestos -->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12  my-4 ml-0">
+                <div class="card rounded-0">
+                    <div class="card-header bg-light">
+                        <h6 class="font-weight-bold mb-0">Comentarios</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="content w-5">
+                            {% if receta != None %}
+                            {% for comentario in comentarios %}
+                            {% if comentario.id_recet == receta.id %}
+                            <section class="bod">
+                                <section class="nobodya">
+                                    <p id="names">Usuario: {{comentario.us_name}}</p>
+                                    {% if time != None %}
+                                    <p id="fech">{{comentario.fech}}</p>
+                                    {% endif %}
+                                </section>
+                                <section class="nobodya">
+                                    <p id="postss">{{comentario.description}}</p>
+                                </section>
+                            </section>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- area de posteo -->
+{% if usuario != None %}
+{% if receta != None %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12  my-4 ml-0">
+                <div class="card rounded-0">
+                    <div class="card-header bg-light">
+                        <h6 class="font-weight-bold mb-0">Postear</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="content w-5">
+                            <section class="resk">
+                                <section class="nobo">
+                                    <textarea class="form-control bg-primary border-0" id="comentario" type="text"
+                                        placeholder="Comentario"></textarea>
+                                </section>
+                            </section>
+                            <section class="nobot">
+                                <button class="bot" onclick="subirComentario()">Comentar</button>
+                                <a href="/receta"><button class="bot">Regresar</button></a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+    function subirComentario() {
+        let comentario = document.getElementById('comentario').value;
+        if (comentario === '') {
+            alert("Error: Campo de Comentario vacio")
+        } else {
+            let datos = {
+                comentario: comentario
+            }
+            let opciones = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datos)
+            }
+            fetch('/comentario/{{receta.id}}', opciones).then((res) => {
+                res.json().then((data) => {
+                    location.reload();
+                });
+            });
+        }
+
+    }
+</script>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block fine %}
+<!-- java Script-->
+
+{% endblock %}
